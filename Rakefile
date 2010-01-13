@@ -1,20 +1,13 @@
 require 'active_support'
 
-site_url  = "http://yoursite.com"   # deployed site url for sitemap.xml generator
+site_url  = "http://michaelahale.com"   # deployed site url for sitemap.xml generator
 port      = "4000"     # preview project port eg. http://localhost:4000
 site      = "site"     # compiled site directory
 source    = "source" # source file directory
 
 ## -- Rsync Deploy config -- ##
-ssh_user      = "user@host.com"    # for rsync deployment
+ssh_user      = "mikehale@michaelahale.com"    # for rsync deployment
 document_root = "~/document_root/" # for rsync deployment
-## ---- ##
-
-## -- Github Pages deploy config -- ##
-# Read http://pages.github.com for guidance
-# If you're not using this, you can remove it
-source_branch = "source" # this compiles to your deploy branch
-deploy_branch = "master" # For user pages, use "master" for project pages use "gh-pages"
 ## ---- ##
 
 def ok_failed(condition)

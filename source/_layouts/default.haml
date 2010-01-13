@@ -1,24 +1,26 @@
 ---
-blog_title: My Octopress Blog
+blog_title: liveandlearn
 
-twitter_user: 
+twitter_user: michaelahale
 tweet_count: 3
 show_replies: false
 
-delicious_user: 
+delicious_user: mikehale
 delicious_count: 3
 
-full_url: 
-disqus_short_name: 
+full_url: http://michaelahale.com
+-#disqus_short_name: htgliveandlearn
 
-google_custom_search_id:
-google_analytics_tracking_id:
+google_custom_search_id: 014317084611756227549:hx6rawxatam
+google_analytics_tracking_id: UA-12362922-1
 
 ---
 
 !!! 1.1 Transitional
 %html(xmlns="http://www.w3.org/1999/xhtml" xml:lang="en")
   %head
+    %link(rel="openid.server" href="http://www.myopenid.com/server")
+    %link(rel="openid.delegate" href="http://mikehale.myopenid.com/")
     %title #{page.blog_title} :: #{page.title}
     - if page.respond_to? :description
       %meta(name="description" content="#{page.description}")/
