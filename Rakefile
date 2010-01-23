@@ -7,7 +7,7 @@ source    = "source" # source file directory
 
 ## -- Rsync Deploy config -- ##
 ssh_user      = "mikehale@michaelahale.com"    # for rsync deployment
-document_root = "~/document_root/" # for rsync deployment
+document_root = "~/web/public/new" # for rsync deployment
 ## ---- ##
 
 def ok_failed(condition)
