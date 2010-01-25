@@ -2,6 +2,8 @@ source: source
 destination: site
 markdown: rdiscount
 pygments: true
+pygments-cache: .pygments_cache
+lsi: true
 permalink: /blog/:year/:month/:day/:title
 url: http://michaelahale.com
 multiviews: true
