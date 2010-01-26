@@ -102,7 +102,7 @@ task :watch do
 end
 
 desc "generate and deploy website via rsync"
-multitask :deploy_rsync => [:default, :clean_debug] do
+multitask :deploy_rsync => [:default, :sitemap, :clean_debug] do
   puts ">>> Deploying website to #{site_url} <<<"
   ok_failed system("rsync -avz --delete #{site}/ #{ssh_user}:#{document_root}")
 end
@@ -177,7 +177,7 @@ task :sitemap => :default do
       end
       sitemap.puts %Q{  <url>}
       sitemap.puts %Q{    <loc>#{site_url}#{f}</loc>}
-      sitemap.puts %Q{    <lastmod>#{Time.to_s('%Y-%m-%d')}</lastmod>}
+      sitemap.puts %Q{    <lastmod>#{Time.now.strftime('%Y-%m-%d')}</lastmod>}
       sitemap.puts %Q{    <changefreq>weekly</changefreq>}
       sitemap.puts %Q{    <priority>#{priority}</priority>}
       sitemap.puts %Q{  </url>}
