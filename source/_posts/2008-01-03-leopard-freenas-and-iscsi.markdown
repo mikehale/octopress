@@ -1,5 +1,6 @@
 ---
 title: Leopard, FreeNAS and ISCSI
+categories: [leopard, storage, iscsi]
 ---
 I installed Leopard a few days ago, and in preparation I created a bootable backup of my system using the excellent [Carbon Copy Cloner](http://www.bombich.com/software/ccc.html).  While fairly simple to do, the downside is that I have to have a physical drive present with enough space.  What would be really handy/cool is if I had a storage server that I could allocate and export a new drive from over the network.  Then the storage server can worry about making those bytes available and redundant.
 
