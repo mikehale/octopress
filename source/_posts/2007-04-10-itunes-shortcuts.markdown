@@ -1,5 +1,6 @@
 --- 
 title: iTunes Shortcuts
+wordpress_id: 9
 ---
 If you are a keyboard junkie like me and also enjoying listening to music in iTunes then the following keyboard shortcut should come in handy:
 
