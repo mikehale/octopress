@@ -156,6 +156,8 @@ end
 
 desc "Build an XML sitemap of all html files."
 task :sitemap => :default do
+  # require 'ruby-debug'
+  # debugger
   html_files = FileList.new("#{site}/**/*.html").map{|f| f[("#{site}".size)..-1]}.map do |f|
     if f.ends_with?("index.html")
       f[0..(-("index.html".size + 1))]
@@ -176,7 +178,7 @@ task :sitemap => :default do
         0.8
       end
       sitemap.puts %Q{  <url>}
-      sitemap.puts %Q{    <loc>#{site_url}#{File.basename(f, '.html')}</loc>}
+      sitemap.puts %Q{    <loc>#{site_url}#{f.gsub(/(\.html$)/, '')}</loc>}
       sitemap.puts %Q{    <lastmod>#{File.new(File.join(site, f)).mtime.strftime('%Y-%m-%d')}</lastmod>}
       sitemap.puts %Q{    <changefreq>weekly</changefreq>}
       sitemap.puts %Q{    <priority>#{priority}</priority>}
