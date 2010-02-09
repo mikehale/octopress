@@ -176,7 +176,7 @@ task :sitemap => :default do
         0.8
       end
       sitemap.puts %Q{  <url>}
-      sitemap.puts %Q{    <loc>#{site_url}#{f}</loc>}
+      sitemap.puts %Q{    <loc>#{site_url}#{File.basename(f, '.html')}</loc>}
       sitemap.puts %Q{    <lastmod>#{File.new(File.join(site, f)).mtime.strftime('%Y-%m-%d')}</lastmod>}
       sitemap.puts %Q{    <changefreq>weekly</changefreq>}
       sitemap.puts %Q{    <priority>#{priority}</priority>}
