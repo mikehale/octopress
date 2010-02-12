@@ -17,15 +17,32 @@ require 'settings'
 #  SEQUEL_CONNECT_STRING = "mysql://root:@localhost/old_blog"
 #  BLOG_TITLE = "liveandlearn :: "
 
+class Disqus::Thread
+  # overide to allow opts to override current settings and to pass an int to allow_comments (maybe true and false should be converted in the post method?)
+  def update(opts = {})
+    result = Disqus::Api::update_thread({
+      :forum_api_key  => forum.key,
+      :thread_id      => id,
+      :title          => title,
+      :slug           => slug,
+      :url            => url,
+      :allow_comments => allow_comments ? 1 : 0}.merge(opts)
+    )
+    return result["succeeded"]
+  end
+end
+
 class Disqus::Api
   class << self
-    
-    # override this method since the uri was moved from thread_by_identifier to thread_by_identifier/
-    def thread_by_identifier(opts = {})
-      JSON.parse(post('thread_by_identifier/', :forum_api_key => opts[:forum_api_key],
-                                              :identifier => opts[:identifier],
-                                              :title => opts[:title] ))
+
+    # override this method since uris end with /
+    def post(*args)
+      url = "#{ROOT}/#{args.shift}/"
+      post_params = {}
+      args.shift.each { |k, v| post_params[k.to_s]=v.to_s }
+      Net::HTTP.post_form(URI.parse(url),post_params).body
     end
+
   end
 end
 
@@ -71,7 +88,7 @@ class WordpressDisqusImporter
     # print_post_summary
     # print_post_comment_summary
     # print_forums
-    create_comments
+    # create_comments
   end
   
   def print_post_summary
@@ -79,16 +96,23 @@ class WordpressDisqusImporter
       puts "#{post.full_title} #{post.full_url}"
     end
   end
-  
+
   def print_forums
+    puts "Printing Threads and Posts:\n\n"
     Disqus::Forum.list.each do |forum|
       forum.forum_threads.each do |thread|
-        puts "identifier: <#{thread.identifier}> title: <#{thread.title}> url: <#{thread.url}>"
+        puts "id: <#{thread.id}> identifier: <#{thread.identifier}> title: <#{thread.title}> url: <#{thread.url}>"
+
+        Disqus::Post.list(thread).each do |post|
+          puts "id: <#{post.id}> shown: <#{post.shown}> message: <#{post.message}>"
+        end
       end
     end
+    puts "\n\nFinished Printing Threads and Posts.\n\n"
   end
   
   def create_thread(message)
+    raise message if ( !message.has_key?("url") || message["url"].nil? )
     Disqus::Thread.new(
       message["id"],
       forum,
