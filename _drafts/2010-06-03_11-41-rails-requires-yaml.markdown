@@ -1,0 +1,3 @@
+---
+title: "Rails Requires Yaml"
+---
