@@ -29,11 +29,11 @@ task :default => [:generate_site, :generate_style] do
 end
 
 # usage rake post[my-new-post] or rake post['my new post'] or rake post (defaults to "new-post")
-desc "Begin a new post in #{source}/_posts"
+desc "Begin a new post in _drafts"
 task :post, :filename do |t, args|
   args.with_defaults(:filename => 'new-post')
   #system "touch #{source}/_posts/#{Time.now.strftime('%Y-%m-%d_%H-%M')}-#{args.filename}.markdown"
-  open("#{source}/_posts/#{Time.now.strftime('%Y-%m-%d_%H-%M')}-#{args.filename.gsub(/[ _]/, '-')}.markdown", 'w') do |post|
+  open("_drafts/#{Time.now.strftime('%Y-%m-%d_%H-%M')}-#{args.filename.gsub(/[ _]/, '-')}.markdown", 'w') do |post|
     post.puts "---"
     post.puts "title: \"#{args.filename.gsub(/[-_]/, ' ').titlecase}\""
     post.puts "---"
