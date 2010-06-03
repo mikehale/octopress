@@ -64,7 +64,7 @@ end
 desc "Generate styles only"
 task :generate_style do
   puts ">>> Generating styles <<<"
-  system "compass"
+  system "bundle exec compass compile"
 end
 
 desc "Generate site files only"
@@ -137,7 +137,7 @@ desc "start up an instance of serve on the output files"
 task :start_serve => :stop_serve do
   cd "#{site}" do
     print "Starting serve..."
-    ok_failed system("serve #{port} > /dev/null 2>&1 &")
+    ok_failed system("bundle exec serve #{port} > /dev/null 2>&1 &")
   end
 end
 
