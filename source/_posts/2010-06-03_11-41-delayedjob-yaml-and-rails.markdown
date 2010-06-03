@@ -62,3 +62,5 @@ Seeing the comment 'Unresolved objects' made me wonder if the problem was that s
 In fact it looks like this has been a feature of rails for [quite some time](http://lists.rubyonrails.org/pipermail/rails/2004-December/001206.html) (welcome to the club mike ;-).
 
 So now I understand why I got the error, but I still need to figure out a good way to have objects loaded so that I don't end up with an unexpected Object::YAML instance.
+
+As it turns out the latest version of delayed_job (2.1.0.pre) has fixed this problem by cleaning up and beefing up the YAML dumping/loading. Check out the [code](http://github.com/collectiveidea/delayed_job/blob/master/lib/delayed/yaml_ext.rb)!
