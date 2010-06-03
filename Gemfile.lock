@@ -1,0 +1,60 @@
+--- 
+specs: 
+- RedCloth: 
+    version: 4.2.3
+- activesupport: 
+    version: 2.3.8
+- stemmer: 
+    version: 1.0.1
+- classifier: 
+    version: 1.3.1
+- haml: 
+    version: 3.0.9
+- compass: 
+    version: 0.10.2
+- compass-colors: 
+    version: 0.3.1
+- directory_watcher: 
+    version: 1.3.2
+- liquid: 
+    version: 2.0.0
+- syntax: 
+    version: 1.0.0
+- maruku: 
+    version: 0.6.0
+- open4: 
+    version: 1.0.1
+- jekyll: 
+    version: 0.5.2
+    source: 0
+- rdiscount: 
+    version: 1.6.3.2
+hash: 599523ee366f21c082694d2ac817e932ece97abd
+sources: 
+- Git: 
+    uri: git://github.com/henrik/jekyll.git
+    git: git://github.com/henrik/jekyll.git
+    ref: b6bbb99894fbd27f41a50ca4ef4a5e78ed54872c
+- Rubygems: 
+    uri: http://gemcutter.org
+dependencies: 
+  compass-colors: 
+    version: ">= 0"
+    group: 
+    - :default
+  compass: 
+    version: ">= 0"
+    group: 
+    - :default
+  jekyll: 
+    version: ">= 0"
+    group: 
+    - :default
+  rdiscount: 
+    version: ">= 0"
+    group: 
+    - :default
+  activesupport: 
+    version: ">= 0"
+    group: 
+    - :default

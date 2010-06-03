@@ -1,3 +1,7 @@
+require "rubygems"
+require "bundler"
+Bundler.setup
+
 require 'active_support'
 
 site_url  = "http://michaelahale.com"   # deployed site url for sitemap.xml generator
@@ -66,7 +70,7 @@ end
 desc "Generate site files only"
 task :generate_site => [:clean, :generate_style] do
   puts "\n\n>>> Generating site files <<<"
-  system "jekyll"
+  system "bundle exec jekyll"
   system "mv #{site}/atom.html #{site}/atom.xml"
 end
 
